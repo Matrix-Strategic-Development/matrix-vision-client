@@ -5,7 +5,7 @@ import { cn } from "./cn";
 import { dialogTitleStaticClasses } from "./dialog";
 
 const alertVariants = cva(
-  "relative w-full rounded-xl border p-4 [&>svg]:text-foreground grid gap-y-1 gap-x-2 [&:has(>svg)]:grid-cols-[auto_[main]_minmax(0,1fr)] items-center",
+  "relative w-full rounded-lg border p-4 [&>svg]:text-foreground grid gap-y-1 gap-x-2 [&:has(>svg)]:grid-cols-[auto_[main]_minmax(0,1fr)] items-center",
   {
     variants: {
       variant: {
@@ -59,4 +59,4 @@ const AlertDescription = React.forwardRef<
 ));
 AlertDescription.displayName = "AlertDescription";
 
-export { Alert, AlertDescription,AlertTitle, alertVariants };
+export { Alert, AlertDescription, AlertTitle, alertVariants };

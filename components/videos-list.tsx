@@ -84,9 +84,9 @@ export function VideosList() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Recent Videos</CardTitle>
+                <CardTitle>Последние видео</CardTitle>
                 <CardDescription>
-                    Latest uploaded factory surveillance videos
+                    Последние загруженные видео с производства
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -98,7 +98,7 @@ export function VideosList() {
                     ) : videos.length === 0 ? (
                         <div className="flex flex-col items-center justify-center h-40 text-center">
                             <IconVideo className="w-12 h-12 text-muted-foreground mb-2" />
-                            <p className="text-sm text-muted-foreground">No videos uploaded yet</p>
+                            <p className="text-sm text-muted-foreground">Видео пока не загружены</p>
                         </div>
                     ) : (
                         <div className="space-y-3">
@@ -141,7 +141,7 @@ export function VideosList() {
                                             </Badge>
                                             {video.total_detections !== undefined && video.total_detections > 0 && (
                                                 <Badge variant="secondary" className="text-xs">
-                                                    {video.total_detections} detections
+                                                    {video.total_detections} обнаружений
                                                 </Badge>
                                             )}
                                         </div>

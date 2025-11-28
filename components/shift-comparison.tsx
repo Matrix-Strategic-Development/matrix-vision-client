@@ -17,19 +17,19 @@ import {
 
 const shiftData = [
     {
-        shift: "Morning",
+        shift: "Утренняя",
         workers: 45,
         productivity: 82.5,
         incidents: 1,
     },
     {
-        shift: "Afternoon",
+        shift: "Дневная",
         workers: 52,
         productivity: 78.3,
         incidents: 3,
     },
     {
-        shift: "Night",
+        shift: "Ночная",
         workers: 28,
         productivity: 71.2,
         incidents: 2,
@@ -38,15 +38,15 @@ const shiftData = [
 
 const chartConfig = {
     workers: {
-        label: "Workers",
+        label: "Работников",
         color: "hsl(var(--chart-1))",
     },
     productivity: {
-        label: "Productivity %",
+        label: "Производительность %",
         color: "hsl(var(--chart-2))",
     },
     incidents: {
-        label: "Incidents",
+        label: "Инциденты",
         color: "hsl(var(--chart-3))",
     },
 } satisfies ChartConfig
@@ -55,9 +55,9 @@ export function ShiftComparison() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Shift Comparison</CardTitle>
+                <CardTitle>Сравнение смен</CardTitle>
                 <CardDescription>
-                    Performance metrics across different work shifts
+                    Показатели производительности по разным сменам
                 </CardDescription>
             </CardHeader>
             <CardContent>

@@ -22,7 +22,7 @@ export function VideoUpload() {
         const selectedFile = e.target.files?.[0]
         if (selectedFile) {
             if (!selectedFile.type.startsWith("video/")) {
-                toast.error("Please select a valid video file")
+                toast.error("Пожалуйста, выберите видео файл")
                 return
             }
             setFile(selectedFile)
@@ -56,8 +56,8 @@ export function VideoUpload() {
             const result = await response.json()
             setProgress(100)
 
-            toast.success("Video uploaded successfully!", {
-                description: `${result.filename} is queued for analysis`,
+            toast.success("Видео успешно загружено!", {
+                description: `${result.filename} добавлено в очередь на анализ`,
             })
 
             setTimeout(() => {
@@ -66,8 +66,8 @@ export function VideoUpload() {
                 setUploading(false)
             }, 1000)
         } catch (error) {
-            toast.error("Upload failed", {
-                description: "Please try again",
+            toast.error("Ошибка загрузки", {
+                description: "Пожалуйста, попробуйте снова",
             })
             setUploading(false)
             setProgress(0)
@@ -77,9 +77,9 @@ export function VideoUpload() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Upload Factory Video</CardTitle>
+                <CardTitle>Загрузка видео с завода</CardTitle>
                 <CardDescription>
-                    Upload video footage from factory cameras for AI analysis
+                    Загрузите видео с камер завода для AI-анализа
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -89,10 +89,10 @@ export function VideoUpload() {
                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                 <IconUpload className="w-12 h-12 mb-4 text-muted-foreground" />
                                 <p className="mb-2 text-sm text-muted-foreground">
-                                    <span className="font-semibold">Click to upload</span> or drag and drop
+                                    <span className="font-semibold">Нажмите для загрузки</span> или перетащите файл
                                 </p>
                                 <p className="text-xs text-muted-foreground">
-                                    MP4, AVI, MOV, or MKV (MAX. 500MB)
+                                    MP4, AVI, MOV или MKV (МАКС. 500МБ)
                                 </p>
                             </div>
                             <input
@@ -110,7 +110,7 @@ export function VideoUpload() {
                                 <div className="flex-1 min-w-0">
                                     <p className="text-sm font-medium truncate">{file.name}</p>
                                     <p className="text-xs text-muted-foreground">
-                                        {(file.size / (1024 * 1024)).toFixed(2)} MB
+                                        {(file.size / (1024 * 1024)).toFixed(2)} МБ
                                     </p>
                                 </div>
                                 <Button
@@ -127,7 +127,7 @@ export function VideoUpload() {
                                 <div className="space-y-2">
                                     <Progress value={progress} />
                                     <p className="text-xs text-center text-muted-foreground">
-                                        Uploading... {progress}%
+                                        Загрузка... {progress}%
                                     </p>
                                 </div>
                             )}
@@ -140,12 +140,12 @@ export function VideoUpload() {
                                 {uploading ? (
                                     <>
                                         <IconLoader2 className="w-4 h-4 mr-2 animate-spin" />
-                                        Uploading...
+                                        Загрузка...
                                     </>
                                 ) : (
                                     <>
                                         <IconUpload className="w-4 h-4 mr-2" />
-                                        Upload Video
+                                        Загрузить видео
                                     </>
                                 )}
                             </Button>

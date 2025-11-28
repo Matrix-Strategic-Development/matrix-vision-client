@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
-import { Mulish, Poppins } from "next/font/google";
+import { Mulish, Rubik } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "next-themes";
 
 const mulish = Mulish({
   variable: "--font-mulish",
   subsets: ["latin"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const rubik = Rubik({
+  variable: "--font-rubik",
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Matrix Vision | AI-Powered Factory Monitoring",
+    default: "Matrix Vision | AI-система мониторинга завода",
     template: "%s | Matrix Vision"
   },
-  description: "Smart video analysis system for factories. AI-powered person detection, action recognition, and safety monitoring for industrial environments.",
+  description: "Умная система анализа видео для производств. AI-распознавание людей, действий и мониторинг безопасности в промышленных условиях.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -38,12 +39,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru" suppressHydrationWarning>
       <body
-        className={`${mulish.variable} ${poppins.variable} font-sans antialiased dark`}
+        className={`${mulish.variable} ${rubik.variable} font-sans antialiased`}
       >
-        {children}
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

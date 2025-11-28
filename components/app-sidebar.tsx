@@ -24,6 +24,7 @@ import Logo from "@/public/logo-matrix.svg"
 
 import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
+import { NavQuickActions } from "@/components/nav-quick-actions"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
 import {
@@ -38,96 +39,96 @@ import {
 
 const data = {
   user: {
-    name: "Factory Admin",
+    name: "Администратор завода",
     email: "admin@matrix-vision.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: "Dashboard",
-      url: "#",
+      title: "Панель управления",
+      url: "/",
       icon: IconDashboard,
     },
     {
-      title: "Video Analysis",
-      url: "#",
+      title: "Анализ видео",
+      url: "/videos",
       icon: IconCamera,
     },
     {
-      title: "Analytics",
-      url: "#",
+      title: "Аналитика",
+      url: "/analytics",
       icon: IconChartBar,
     },
     {
-      title: "Zones",
-      url: "#",
+      title: "Зоны",
+      url: "/zones",
       icon: IconFolder,
     },
     {
-      title: "Workers",
-      url: "#",
+      title: "Работники",
+      url: "/workers",
       icon: IconUsers,
     },
   ],
   navClouds: [
     {
-      title: "Live Monitoring",
+      title: "Мониторинг в реальном времени",
       icon: IconCamera,
       isActive: true,
       url: "#",
       items: [
         {
-          title: "All Cameras",
+          title: "Все камеры",
           url: "#",
         },
         {
-          title: "Zone A",
+          title: "Зона А",
           url: "#",
         },
         {
-          title: "Zone B",
+          title: "Зона Б",
           url: "#",
         },
         {
-          title: "Assembly Lines",
+          title: "Сборочные линии",
           url: "#",
         },
       ],
     },
     {
-      title: "Reports",
+      title: "Отчеты",
       icon: IconReport,
       url: "#",
       items: [
         {
-          title: "Daily Reports",
+          title: "Ежедневные отчеты",
           url: "#",
         },
         {
-          title: "Safety Incidents",
+          title: "Инциденты безопасности",
           url: "#",
         },
         {
-          title: "Productivity",
+          title: "Производительность",
           url: "#",
         },
       ],
     },
     {
-      title: "AI Models",
+      title: "AI Модели",
       icon: IconFileAi,
       url: "#",
       items: [
         {
-          title: "Action Recognition",
+          title: "Распознавание действий",
           url: "#",
         },
         {
-          title: "Person Detection",
+          title: "Обнаружение людей",
           url: "#",
         },
         {
-          title: "Safety Analysis",
+          title: "Анализ безопасности",
           url: "#",
         },
       ],
@@ -135,34 +136,34 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "Settings",
-      url: "#",
+      title: "Настройки",
+      url: "/settings",
       icon: IconSettings,
     },
     {
-      title: "Get Help",
+      title: "Справка",
       url: "#",
       icon: IconHelp,
     },
     {
-      title: "Search",
+      title: "Поиск",
       url: "#",
       icon: IconSearch,
     },
   ],
   documents: [
     {
-      name: "Video Library",
+      name: "Библиотека видео",
       url: "#",
       icon: IconDatabase,
     },
     {
-      name: "Safety Reports",
+      name: "Отчеты безопасности",
       url: "#",
       icon: IconReport,
     },
     {
-      name: "Documentation",
+      name: "Документация",
       url: "#",
       icon: IconFileWord,
     },
@@ -189,6 +190,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <NavQuickActions />
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

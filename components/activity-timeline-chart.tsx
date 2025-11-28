@@ -44,23 +44,23 @@ const chartData = generateHourlyData()
 
 const chartConfig = {
     walking: {
-        label: "Walking",
+        label: "Ходьба",
         color: "hsl(var(--chart-1))",
     },
     standing: {
-        label: "Standing",
+        label: "Стояние",
         color: "hsl(var(--chart-2))",
     },
     lifting: {
-        label: "Lifting",
+        label: "Подъем",
         color: "hsl(var(--chart-3))",
     },
     bending: {
-        label: "Bending",
+        label: "Наклон",
         color: "hsl(var(--chart-4))",
     },
     carrying: {
-        label: "Carrying",
+        label: "Перенос",
         color: "hsl(var(--chart-5))",
     },
 } satisfies ChartConfig
@@ -72,21 +72,21 @@ export function ActivityTimelineChart() {
         <Card>
             <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
                 <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-                    <CardTitle>Activity Timeline</CardTitle>
+                    <CardTitle>Временная шкала активности</CardTitle>
                     <CardDescription>
-                        Worker activity patterns throughout the day
+                        Паттерны активности работников в течение дня
                     </CardDescription>
                 </div>
                 <div className="flex">
                     <div className="relative z-30 flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left sm:border-l sm:border-t-0 sm:px-8 sm:py-6">
                         <Select value={timeRange} onValueChange={setTimeRange}>
                             <SelectTrigger className="w-[160px]">
-                                <SelectValue placeholder="Select range" />
+                                <SelectValue placeholder="Выберите период" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="24h">Last 24 Hours</SelectItem>
-                                <SelectItem value="7d">Last 7 Days</SelectItem>
-                                <SelectItem value="30d">Last 30 Days</SelectItem>
+                                <SelectItem value="24h">Последние 24 часа</SelectItem>
+                                <SelectItem value="7d">Последние 7 дней</SelectItem>
+                                <SelectItem value="30d">Последние 30 дней</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -118,7 +118,7 @@ export function ActivityTimelineChart() {
                                 <ChartTooltipContent
                                     className="w-[150px]"
                                     nameKey="actions"
-                                    labelFormatter={(value) => `Time: ${value}`}
+                                    labelFormatter={(value) => `Время: ${value}`}
                                 />
                             }
                         />

@@ -16,18 +16,18 @@ import {
 } from "@/components/ui/chart"
 
 const actionData = [
-    { action: "Walking", count: 12450, color: "hsl(var(--chart-1))" },
-    { action: "Standing", count: 18230, color: "hsl(var(--chart-2))" },
-    { action: "Lifting", count: 6780, color: "hsl(var(--chart-3))" },
-    { action: "Bending", count: 5420, color: "hsl(var(--chart-4))" },
-    { action: "Carrying", count: 3890, color: "hsl(var(--chart-5))" },
-    { action: "Sitting", count: 2340, color: "hsl(var(--primary))" },
-    { action: "Reaching", count: 1890, color: "hsl(var(--chart-1))" },
+    { action: "Ходьба", count: 12450, color: "hsl(var(--chart-1))" },
+    { action: "Стояние", count: 18230, color: "hsl(var(--chart-2))" },
+    { action: "Подъем", count: 6780, color: "hsl(var(--chart-3))" },
+    { action: "Наклон", count: 5420, color: "hsl(var(--chart-4))" },
+    { action: "Перенос", count: 3890, color: "hsl(var(--chart-5))" },
+    { action: "Сидение", count: 2340, color: "hsl(var(--primary))" },
+    { action: "Дотягивание", count: 1890, color: "hsl(var(--chart-1))" },
 ]
 
 const chartConfig = {
     count: {
-        label: "Detections",
+        label: "Обнаружения",
         color: "hsl(var(--primary))",
     },
 } satisfies ChartConfig
@@ -36,9 +36,9 @@ export function ActionDistributionChart() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Action Distribution</CardTitle>
+                <CardTitle>Распределение действий</CardTitle>
                 <CardDescription>
-                    Total detected actions across all analyzed videos
+                    Общее количество обнаруженных действий во всех видео
                 </CardDescription>
             </CardHeader>
             <CardContent>
