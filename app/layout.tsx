@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mulish, Poppins } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const mulish = Mulish({
   variable: "--font-mulish",
@@ -15,10 +16,10 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Matrix Vision | Анализ видео с ИИ",
+    default: "Matrix Vision | AI-Powered Factory Monitoring",
     template: "%s | Matrix Vision"
   },
-  description: "Умный анализ видео для заводов. Обнаружение людей, отслеживание действий и контроль безопасности с помощью ИИ.",
+  description: "Smart video analysis system for factories. AI-powered person detection, action recognition, and safety monitoring for industrial environments.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -42,6 +43,7 @@ export default function RootLayout({
         className={`${mulish.variable} ${poppins.variable} font-sans antialiased dark`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import {
   IconCamera,
   IconChartBar,
@@ -19,6 +20,8 @@ import {
   IconUsers,
 } from "@tabler/icons-react"
 
+import Logo from "@/public/logo-matrix.svg"
+
 import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
@@ -35,8 +38,8 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Factory Admin",
+    email: "admin@matrix-vision.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
@@ -46,9 +49,9 @@ const data = {
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
+      title: "Video Analysis",
       url: "#",
-      icon: IconListDetails,
+      icon: IconCamera,
     },
     {
       title: "Analytics",
@@ -56,59 +59,75 @@ const data = {
       icon: IconChartBar,
     },
     {
-      title: "Projects",
+      title: "Zones",
       url: "#",
       icon: IconFolder,
     },
     {
-      title: "Team",
+      title: "Workers",
       url: "#",
       icon: IconUsers,
     },
   ],
   navClouds: [
     {
-      title: "Capture",
+      title: "Live Monitoring",
       icon: IconCamera,
       isActive: true,
       url: "#",
       items: [
         {
-          title: "Active Proposals",
+          title: "All Cameras",
           url: "#",
         },
         {
-          title: "Archived",
+          title: "Zone A",
+          url: "#",
+        },
+        {
+          title: "Zone B",
+          url: "#",
+        },
+        {
+          title: "Assembly Lines",
           url: "#",
         },
       ],
     },
     {
-      title: "Proposal",
-      icon: IconFileDescription,
+      title: "Reports",
+      icon: IconReport,
       url: "#",
       items: [
         {
-          title: "Active Proposals",
+          title: "Daily Reports",
           url: "#",
         },
         {
-          title: "Archived",
+          title: "Safety Incidents",
+          url: "#",
+        },
+        {
+          title: "Productivity",
           url: "#",
         },
       ],
     },
     {
-      title: "Prompts",
+      title: "AI Models",
       icon: IconFileAi,
       url: "#",
       items: [
         {
-          title: "Active Proposals",
+          title: "Action Recognition",
           url: "#",
         },
         {
-          title: "Archived",
+          title: "Person Detection",
+          url: "#",
+        },
+        {
+          title: "Safety Analysis",
           url: "#",
         },
       ],
@@ -133,17 +152,17 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
+      name: "Video Library",
       url: "#",
       icon: IconDatabase,
     },
     {
-      name: "Reports",
+      name: "Safety Reports",
       url: "#",
       icon: IconReport,
     },
     {
-      name: "Word Assistant",
+      name: "Documentation",
       url: "#",
       icon: IconFileWord,
     },
@@ -161,8 +180,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <Image src={Logo} alt="Matrix Vision Logo" className="!size-5" />
+                <span className="text-base font-semibold">Matrix Vision</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
