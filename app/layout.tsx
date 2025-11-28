@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${mulish.variable} ${poppins.variable} font-sans antialiased`}
+        className={`${mulish.variable} ${poppins.variable} font-sans antialiased dark`}
       >
         {children}
       </body>
