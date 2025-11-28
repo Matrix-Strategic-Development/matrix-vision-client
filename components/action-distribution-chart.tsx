@@ -16,19 +16,19 @@ import {
 } from "@/components/ui/chart"
 
 const actionData = [
-    { action: "Ходьба", count: 12450, color: "hsl(var(--chart-1))" },
-    { action: "Стояние", count: 18230, color: "hsl(var(--chart-2))" },
-    { action: "Подъем", count: 6780, color: "hsl(var(--chart-3))" },
-    { action: "Наклон", count: 5420, color: "hsl(var(--chart-4))" },
-    { action: "Перенос", count: 3890, color: "hsl(var(--chart-5))" },
-    { action: "Сидение", count: 2340, color: "hsl(var(--primary))" },
-    { action: "Дотягивание", count: 1890, color: "hsl(var(--chart-1))" },
+    { action: "Ходьба", count: 12450 },
+    { action: "Стояние", count: 18230 },
+    { action: "Подъем", count: 6780 },
+    { action: "Наклон", count: 5420 },
+    { action: "Перенос", count: 3890 },
+    { action: "Сидение", count: 2340 },
+    { action: "Дотягивание", count: 1890 },
 ]
 
 const chartConfig = {
     count: {
         label: "Обнаружения",
-        color: "hsl(var(--primary))",
+        color: "var(--chart-1)",
     },
 } satisfies ChartConfig
 

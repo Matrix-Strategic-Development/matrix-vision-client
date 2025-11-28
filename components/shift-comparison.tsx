@@ -39,15 +39,15 @@ const shiftData = [
 const chartConfig = {
     workers: {
         label: "Работников",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
     },
     productivity: {
         label: "Производительность %",
-        color: "hsl(var(--chart-2))",
+        color: "var(--chart-2)",
     },
     incidents: {
         label: "Инциденты",
-        color: "hsl(var(--chart-3))",
+        color: "var(--chart-3)",
     },
 } satisfies ChartConfig
 

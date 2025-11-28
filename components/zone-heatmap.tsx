@@ -16,20 +16,28 @@ import {
 } from "@/components/ui/chart"
 
 const zoneData = [
-    { zone: "Зона А", value: 3200, color: "hsl(var(--chart-1))" },
-    { zone: "Зона Б", value: 1800, color: "hsl(var(--chart-2))" },
-    { zone: "Зона В", value: 2400, color: "hsl(var(--chart-3))" },
-    { zone: "Зона Г", value: 1500, color: "hsl(var(--chart-4))" },
-    { zone: "Сборочная линия 1", value: 3500, color: "hsl(var(--chart-5))" },
-    { zone: "Сборочная линия 2", value: 2900, color: "hsl(var(--primary))" },
-    { zone: "Складская зона", value: 2100, color: "hsl(var(--chart-1))" },
-    { zone: "Погрузочная зона", value: 1600, color: "hsl(var(--chart-2))" },
+    { zone: "Зона А", value: 3200, fill: "var(--chart-1)" },
+    { zone: "Зона Б", value: 1800, fill: "var(--chart-2)" },
+    { zone: "Зона В", value: 2400, fill: "var(--chart-3)" },
+    { zone: "Зона Г", value: 1500, fill: "var(--chart-4)" },
+    { zone: "Сборочная линия 1", value: 3500, fill: "var(--chart-5)" },
+    { zone: "Сборочная линия 2", value: 2900, fill: "var(--chart-1)" },
+    { zone: "Складская зона", value: 2100, fill: "var(--chart-2)" },
+    { zone: "Погрузочная зона", value: 1600, fill: "var(--chart-3)" },
 ]
 
 const chartConfig = {
     value: {
         label: "Количество активности",
     },
+    "Зона А": { label: "Зона А", color: "var(--chart-1)" },
+    "Зона Б": { label: "Зона Б", color: "var(--chart-2)" },
+    "Зона В": { label: "Зона В", color: "var(--chart-3)" },
+    "Зона Г": { label: "Зона Г", color: "var(--chart-4)" },
+    "Сборочная линия 1": { label: "Сборочная линия 1", color: "var(--chart-5)" },
+    "Сборочная линия 2": { label: "Сборочная линия 2", color: "var(--chart-1)" },
+    "Складская зона": { label: "Складская зона", color: "var(--chart-2)" },
+    "Погрузочная зона": { label: "Погрузочная зона", color: "var(--chart-3)" },
 } satisfies ChartConfig
 
 export function ZoneHeatmap() {
@@ -57,7 +65,7 @@ export function ZoneHeatmap() {
                                 labelLine={false}
                             >
                                 {zoneData.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={entry.color} />
+                                    <Cell key={`cell-${index}`} fill={entry.fill} />
                                 ))}
                             </Pie>
                             <Legend />

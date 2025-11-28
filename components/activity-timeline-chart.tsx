@@ -45,23 +45,23 @@ const chartData = generateHourlyData()
 const chartConfig = {
     walking: {
         label: "Ходьба",
-        color: "hsl(var(--chart-1))",
+        color: "var(--chart-1)",
     },
     standing: {
         label: "Стояние",
-        color: "hsl(var(--chart-2))",
+        color: "var(--chart-2)",
     },
     lifting: {
         label: "Подъем",
-        color: "hsl(var(--chart-3))",
+        color: "var(--chart-3)",
     },
     bending: {
         label: "Наклон",
-        color: "hsl(var(--chart-4))",
+        color: "var(--chart-4)",
     },
     carrying: {
         label: "Перенос",
-        color: "hsl(var(--chart-5))",
+        color: "var(--chart-5)",
     },
 } satisfies ChartConfig
 
