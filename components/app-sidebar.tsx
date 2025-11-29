@@ -27,6 +27,7 @@ import { NavMain } from "@/components/nav-main"
 import { NavQuickActions } from "@/components/nav-quick-actions"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
+import { NavVideos } from "@/components/nav-videos"
 import {
   Sidebar,
   SidebarContent,
@@ -190,6 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <NavVideos />
         <NavQuickActions />
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />

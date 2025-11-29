@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { useDashboardData } from "@/hooks/use-dashboard-data"
 import {
     Card,
     CardContent,
@@ -22,25 +23,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
-const generateHourlyData = () => {
-    const data = []
-    for (let i = 0; i < 24; i++) {
-        const hour = i < 10 ? `0${i}:00` : `${i}:00`
-        const baseActivity = Math.floor(Math.random() * 100) + 50
-        data.push({
-            time: hour,
-            walking: Math.floor(baseActivity * 0.3),
-            standing: Math.floor(baseActivity * 0.35),
-            lifting: Math.floor(baseActivity * 0.15),
-            bending: Math.floor(baseActivity * 0.12),
-            carrying: Math.floor(baseActivity * 0.08),
-        })
-    }
-    return data
-}
-
-const chartData = generateHourlyData()
+import { Skeleton } from "@/components/ui/skeleton"
 
 const chartConfig = {
     walking: {
@@ -67,6 +50,41 @@ const chartConfig = {
 
 export function ActivityTimelineChart() {
     const [timeRange, setTimeRange] = React.useState("24h")
+    const { data, loading } = useDashboardData()
+
+    const chartData = React.useMemo(() => {
+        if (!data?.time_series) return []
+
+        return data.time_series.map((item, index) => {
+            const seconds = item.timestamp
+            const minutes = Math.floor(seconds / 60)
+            const time = `${Math.floor(minutes / 60)}:${String(minutes % 60).padStart(2, '0')}`
+
+            return {
+                time,
+                walking: item.actions?.walking || 0,
+                standing: item.actions?.standing || 0,
+                lifting: item.actions?.lifting || 0,
+                bending: item.actions?.bending || 0,
+                carrying: item.actions?.carrying || 0,
+                sitting: item.actions?.sitting || 0,
+            }
+        })
+    }, [data])
+
+    if (loading) {
+        return (
+            <Card>
+                <CardHeader>
+                    <Skeleton className="h-6 w-64" />
+                    <Skeleton className="h-4 w-96 mt-2" />
+                </CardHeader>
+                <CardContent>
+                    <Skeleton className="h-[300px] w-full" />
+                </CardContent>
+            </Card>
+        )
+    }
 
     return (
         <Card>
@@ -74,7 +92,7 @@ export function ActivityTimelineChart() {
                 <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
                     <CardTitle>Временная шкала активности</CardTitle>
                     <CardDescription>
-                        Паттерны активности работников в течение дня
+                        Паттерны активности работников в течение видео
                     </CardDescription>
                 </div>
                 <div className="flex">
@@ -84,9 +102,7 @@ export function ActivityTimelineChart() {
                                 <SelectValue placeholder="Выберите период" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="24h">Последние 24 часа</SelectItem>
-                                <SelectItem value="7d">Последние 7 дней</SelectItem>
-                                <SelectItem value="30d">Последние 30 дней</SelectItem>
+                                <SelectItem value="24h">Всё видео</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>

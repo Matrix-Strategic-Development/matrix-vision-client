@@ -3,6 +3,7 @@ import { Mulish, Rubik } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "next-themes";
+import { VideoProvider } from "@/contexts/video-context";
 
 const mulish = Mulish({
   variable: "--font-mulish",
@@ -49,8 +50,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
+          <VideoProvider>
+            {children}
+            <Toaster />
+          </VideoProvider>
         </ThemeProvider>
       </body>
     </html>

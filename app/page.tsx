@@ -8,6 +8,7 @@ import { ActionDistributionChart } from "@/components/action-distribution-chart"
 import { SafetyAlerts } from "@/components/safety-alerts"
 import { ShiftComparison } from "@/components/shift-comparison"
 import { ZoneHeatmap } from "@/components/zone-heatmap"
+import { DataFilters } from "@/components/data-filters"
 import {
   SidebarInset,
   SidebarProvider,
@@ -40,6 +41,10 @@ export default function Page() {
 
               <div className="px-4 lg:px-6">
                 <ActivityTimelineChart />
+              </div>
+
+              <div className="px-4 lg:px-6">
+                <DataFilters />
               </div>
 
               <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2">
