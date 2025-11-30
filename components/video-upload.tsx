@@ -27,7 +27,7 @@ export function VideoUpload() {
     const [progress, setProgress] = useState(0)
     const [currentVideo, setCurrentVideo] = useState<VideoStatus | null>(null)
     const [processingProgress, setProcessingProgress] = useState(0)
-    const { refreshVideos, setSelectedVideoId } = useVideo()
+    const { refreshVideos, setSelectedVideoId, setJustProcessedVideoId } = useVideo()
 
     useEffect(() => {
         if (currentVideo && (currentVideo.status === "pending" || currentVideo.status === "processing")) {
@@ -45,9 +45,11 @@ export function VideoUpload() {
                             toast.success("Видео успешно обработано!", {
                                 description: "Результаты анализа доступны в дашборде",
                             })
-                            // Обновляем список видео и выбираем это видео
+                            
                             await refreshVideos()
                             setSelectedVideoId(currentVideo.id)
+                            
+                            setJustProcessedVideoId(currentVideo.id)
                             setTimeout(() => {
                                 setCurrentVideo(null)
                                 setProcessingProgress(0)
@@ -118,7 +120,6 @@ export function VideoUpload() {
             })
             setProcessingProgress(10)
 
-            // Обновляем список видео
             await refreshVideos()
 
             setTimeout(() => {

@@ -44,7 +44,7 @@ const formatTime = (timestamp: string) => {
     const now = new Date()
     const diffMs = now.getTime() - date.getTime()
     const diffMins = Math.floor(diffMs / 60000)
-    
+
     if (diffMins < 60) return `${diffMins} мин назад`
     if (diffMins < 1440) return `${Math.floor(diffMins / 60)} ч назад`
     return `${Math.floor(diffMins / 1440)} дн назад`

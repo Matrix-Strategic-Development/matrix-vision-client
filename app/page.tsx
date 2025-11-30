@@ -6,8 +6,6 @@ import { VideosList } from "@/components/videos-list"
 import { ActivityTimelineChart } from "@/components/activity-timeline-chart"
 import { ActionDistributionChart } from "@/components/action-distribution-chart"
 import { SafetyAlerts } from "@/components/safety-alerts"
-import { ShiftComparison } from "@/components/shift-comparison"
-import { ZoneHeatmap } from "@/components/zone-heatmap"
 import { DataFilters } from "@/components/data-filters"
 import {
   SidebarInset,
@@ -32,13 +30,6 @@ export default function Page() {
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
               <SectionCards />
 
-              <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-3">
-                <div className="lg:col-span-2">
-                  <VideoUpload />
-                </div>
-                <VideosList />
-              </div>
-
               <div className="px-4 lg:px-6">
                 <ActivityTimelineChart />
               </div>
@@ -50,11 +41,6 @@ export default function Page() {
               <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2">
                 <ActionDistributionChart />
                 <SafetyAlerts />
-              </div>
-
-              <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2">
-                <ShiftComparison />
-                <ZoneHeatmap />
               </div>
             </div>
           </div>

@@ -20,17 +20,10 @@ interface DashboardData {
     }>
     time_series: Array<{
         timestamp: number
-        count: number
         actions: Record<string, number>
-    }>
-    zone_heatmap: Array<{
-        zone: string
-        activity_count: number
-        avg_people: number
-        peak_time: string
+        total_count: number
     }>
     recent_alerts: Array<any>
-    shift_comparison: Record<string, any>
 }
 
 export function useDashboardData() {
@@ -52,10 +45,16 @@ export function useDashboardData() {
                 const response = await fetch(url)
 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch dashboard data')
+                    if (response.status === 400) {
+                        console.log('Video analysis not yet completed')
+                        setData(null)
+                        return
+                    }
+                    throw new Error(`Failed to fetch dashboard data: ${response.status}`)
                 }
 
                 const dashboardData = await response.json()
+                console.log('Dashboard data received:', dashboardData)
                 setData(dashboardData)
             } catch (err) {
                 setError(err as Error)

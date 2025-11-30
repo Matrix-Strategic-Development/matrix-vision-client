@@ -2,8 +2,6 @@ import { AppSidebar } from "@/components/app-sidebar"
 import { SiteHeader } from "@/components/site-header"
 import { ActivityTimelineChart } from "@/components/activity-timeline-chart"
 import { ActionDistributionChart } from "@/components/action-distribution-chart"
-import { ShiftComparison } from "@/components/shift-comparison"
-import { ZoneHeatmap } from "@/components/zone-heatmap"
 import {
     SidebarInset,
     SidebarProvider,
@@ -36,13 +34,8 @@ export default function AnalyticsPage() {
                                 <ActivityTimelineChart />
                             </div>
 
-                            <div className="grid gap-4 px-4 lg:px-6 lg:grid-cols-2">
-                                <ActionDistributionChart />
-                                <ZoneHeatmap />
-                            </div>
-
                             <div className="px-4 lg:px-6">
-                                <ShiftComparison />
+                                <ActionDistributionChart />
                             </div>
                         </div>
                     </div>

@@ -25,8 +25,10 @@ const actionLabels: Record<string, string> = {
     bending: "Наклон",
     carrying: "Перенос",
     sitting: "Сидение",
-    reaching: "Дотягивание",
-    falling: "Падение"
+    reaching: "Действия",
+    falling: "Падение",
+    running: "Передвижение",
+    working: "Работа"
 }
 
 const chartConfig = {
@@ -91,7 +93,7 @@ export function ActionDistributionChart() {
                             content={<ChartTooltipContent
                                 formatter={(value, name, props) => [
                                     `${value} (${props.payload.percentage?.toFixed(1)}%)`,
-                                    name
+                                    "Обнаружения"
                                 ]}
                             />}
                         />

@@ -18,6 +18,9 @@ interface VideoContextType {
     setSelectedVideoId: (id: number | null) => void
     isLoading: boolean
     refreshVideos: () => Promise<void>
+    
+    justProcessedVideoId: number | null
+    setJustProcessedVideoId: (id: number | null) => void
 }
 
 const VideoContext = createContext<VideoContextType | undefined>(undefined)
@@ -26,6 +29,8 @@ export function VideoProvider({ children }: { children: React.ReactNode }) {
     const [videos, setVideos] = useState<Video[]>([])
     const [selectedVideoId, setSelectedVideoId] = useState<number | null>(null)
     const [isLoading, setIsLoading] = useState(true)
+    
+    const [justProcessedVideoId, setJustProcessedVideoId] = useState<number | null>(null)
 
     const fetchVideos = async () => {
         try {
@@ -35,7 +40,6 @@ export function VideoProvider({ children }: { children: React.ReactNode }) {
                 const data = await response.json()
                 setVideos(data)
 
-                // Автоматически выбираем первое обработанное видео
                 if (!selectedVideoId && data.length > 0) {
                     const completedVideo = data.find((v: Video) => v.status === 'completed')
                     if (completedVideo) {
@@ -52,9 +56,7 @@ export function VideoProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         fetchVideos()
-        // Обновляем список видео каждые 5 секунд
-        const interval = setInterval(fetchVideos, 5000)
-        return () => clearInterval(interval)
+        
     }, [])
 
     return (
@@ -64,7 +66,9 @@ export function VideoProvider({ children }: { children: React.ReactNode }) {
                 selectedVideoId,
                 setSelectedVideoId,
                 isLoading,
-                refreshVideos: fetchVideos
+                refreshVideos: fetchVideos,
+                justProcessedVideoId,
+                setJustProcessedVideoId
             }}
         >
             {children}

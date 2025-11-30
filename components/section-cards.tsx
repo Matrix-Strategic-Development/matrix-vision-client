@@ -26,11 +26,18 @@ export function SectionCards() {
   const { selectedVideoId } = useVideo()
   const [overview, setOverview] = useState<OverviewData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [isPolling, setIsPolling] = useState(false)
 
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        setLoading(true)
+        
+        if (!overview) {
+          setLoading(true)
+        } else {
+          setIsPolling(true)
+        }
+
         const url = selectedVideoId
           ? `http://localhost:8000/api/v1/videos/analytics/dashboard/${selectedVideoId}`
           : 'http://localhost:8000/api/v1/videos/analytics/dashboard'
@@ -38,16 +45,24 @@ export function SectionCards() {
         const response = await fetch(url)
         if (response.ok) {
           const data = await response.json()
+          console.log('Section cards - received data:', data)
           setOverview(data.overview)
+        } else if (response.status === 400) {
+          
+          console.log('Video still processing, will retry...')
+        } else {
+          console.error('Failed to fetch dashboard data:', response.status)
         }
       } catch (error) {
         console.error('Error fetching dashboard data:', error)
       } finally {
         setLoading(false)
+        setIsPolling(false)
       }
     }
 
     fetchDashboardData()
+
   }, [selectedVideoId])
 
   if (loading) {
@@ -91,7 +106,10 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Активных работников</CardDescription>
+          <CardDescription>
+            Активных работников
+            {isPolling && <span className="ml-2 text-xs text-muted-foreground">обновление...</span>}
+          </CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {overview?.active_workers || 0}
           </CardTitle>
